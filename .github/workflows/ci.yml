@@ -12,12 +12,12 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@4
+        uses: actions/checkout@v6
 
       - name: Install Crystal
-        uses: crystal-lang/install-crystal@1
+        uses: crystal-lang/install-crystal@v1
         with:
-          crystal: latest
+          crystal: 1.18
 
       - name: Install shards
         run: shards install

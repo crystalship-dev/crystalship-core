@@ -4,6 +4,6 @@ version: 0.0.1
 authors:
   - Pavlo Kilko <pavel.kilko@gmail.com>
 
-crystal: ">= 1.18.2"
+crystal: ">= 1.18"
 
 license: MIT
