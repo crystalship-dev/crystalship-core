@@ -1,0 +1,9 @@
+name: crystalship-rig-core
+version: 0.0.1
+
+authors:
+  - Pavlo Kilko <pavel.kilko@gmail.com>
+
+crystal: ">= 1.18.2"
+
+license: MIT
