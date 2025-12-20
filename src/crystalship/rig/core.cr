@@ -1,3 +1,7 @@
+require "./core/di/annotations"
+require "./core/di/injectable"
+require "./core/di/container"
+
 module CrShip
   module Rig
     module Core
