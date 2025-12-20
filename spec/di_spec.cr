@@ -1,3 +1,4 @@
+require "spec"
 require "../src/crystalship-rig-core"
 
 module TestDI
