@@ -18,9 +18,9 @@ module CrShip::Rig::Core::Config
           key = k_any.as_s
           val =
             v_any.as_s? ||
-            v_any.as_i64?.try(&.to_s) ||
-            v_any.as_bool?.try(&.to_s) ||
-            v_any.raw.to_s
+              v_any.as_i64?.try(&.to_s) ||
+              v_any.as_bool?.try(&.to_s) ||
+              v_any.raw.to_s
           env_map[key] = val
         end
       end
@@ -49,7 +49,7 @@ module CrShip::Rig::Core::Config
         raw.to_i64
       {% elsif T == Bool %}
         case raw.downcase
-        when "1", "true", "yes", "y", "on" then true
+        when "1", "true", "yes", "y", "on"  then true
         when "0", "false", "no", "n", "off" then false
         else
           raise Error.new("Config: #{env_key} must be bool-like (true/false/1/0). got: #{raw}")
