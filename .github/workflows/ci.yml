@@ -20,7 +20,7 @@ jobs:
           crystal: 1.18
 
       - name: Cache shards (git sources)
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/shards
           key: ${{ runner.os }}-shards-src-${{ hashFiles('shard.yml', 'shard.lock') }}
