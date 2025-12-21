@@ -19,6 +19,14 @@ jobs:
         with:
           crystal: 1.18
 
+      - name: Cache shards (git sources)
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/shards
+          key: ${{ runner.os }}-shards-src-${{ hashFiles('shard.yml', 'shard.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-shards-src-
+
       - name: Install shards
         run: shards install
 
