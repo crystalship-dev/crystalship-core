@@ -1,15 +1,15 @@
-module CrShip::Rig::Core::Config
+module CrShip::Core::Config
   macro define(&block)
-    @@__cs_config_store : ::CrShip::Rig::Core::Config::Store? = nil
+    @@__cs_config_store : ::CrShip::Core::Config::Store? = nil
 
     def self.load(path : String = "config/ship.yml") : Nil
-      @@__cs_config_store = ::CrShip::Rig::Core::Config::Store.from_ship_yml(path)
+      @@__cs_config_store = ::CrShip::Core::Config::Store.from_ship_yml(path)
     end
 
-    private def self.__cs_store : ::CrShip::Rig::Core::Config::Store
+    private def self.__cs_store : ::CrShip::Core::Config::Store
       store = @@__cs_config_store
 
-      raise ::CrShip::Rig::Core::Config::Error.new(
+      raise ::CrShip::Core::Config::Error.new(
         "Config: not loaded. Call #{ {{ @type }} }.load(..) during boot."
       ) unless store
 
@@ -24,7 +24,7 @@ module CrShip::Rig::Core::Config
     {% group_const = group_str.id.camelcase %}
 
     struct {{ group_const }}
-      def initialize(@store : ::CrShip::Rig::Core::Config::Store)
+      def initialize(@store : ::CrShip::Core::Config::Store)
       end
 
       {% body = block.body %}

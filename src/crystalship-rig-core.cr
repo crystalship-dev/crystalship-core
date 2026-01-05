@@ -1,1 +1,0 @@
-require "./crystalship/rig/core"

@@ -1,4 +1,4 @@
-module CrShip::Rig::Core
+module CrShip::Core
   abstract class Injectable
   end
 end

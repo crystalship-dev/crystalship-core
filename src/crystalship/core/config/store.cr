@@ -1,6 +1,6 @@
 require "yaml"
 
-module CrShip::Rig::Core::Config
+module CrShip::Core::Config
   class Store
     @ship_env : Hash(String, String)
 

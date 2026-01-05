@@ -1,8 +1,8 @@
 require "spec"
-require "../src/crystalship-rig-core"
+require "../src/crystalship-core"
 
 module TestConfig
-  include CrShip::Rig::Core::Config
+  include CrShip::Core::Config
 
   define do
     group :http do
@@ -15,7 +15,7 @@ module TestConfig
   end
 end
 
-describe "CrShip::Rig::Core::Config" do
+describe "CrShip::Core::Config" do
   it "uses ENV over ship.yml env map" do
     path = "spec/tmp_ship.yml"
     File.write(path, <<-YML)
@@ -71,7 +71,7 @@ describe "CrShip::Rig::Core::Config" do
     ENV.delete("CRYSTALSHIP_DB_URL")
 
     TestConfig.load(path)
-    expect_raises(CrShip::Rig::Core::Config::Error) do
+    expect_raises(CrShip::Core::Config::Error) do
       TestConfig.db.url
     end
   ensure

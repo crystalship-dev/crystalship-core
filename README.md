@@ -1,16 +1,16 @@
-# crystalship-rig-core
+# crystalship-core
 
-**Crystalship Rig-Core** - fundamental shard of framework **Crystalship** (namespace: `CrShip`). It contains basic capabilities, that will be used by other *Crystalship Rigs*:
+**Crystalship Core** - fundamental shard of framework **Crystalship** (namespace: `CrShip`). It contains basic capabilities, that will be used by other *Crystalship Rigs*:
 **compile-time DI** and **typed configuration**.
 
-- Namespace: `CrShip::Rig::Core`
+- Namespace: `CrShip::Core`
 - License: MIT
 - Status: early development (0.0.x)
 
 ## Features
 
 ### DI (compile-time container)
-- `CrShip::Rig::Core::Container.resolve(T)` - resolve dependencies via constructor.
+- `CrShip::Core::Container.resolve(T)` - resolve dependencies via constructor.
 - Singleton caching on the type level.
 - Hardening (compile-time checks):
   - skips `abstract` types
@@ -32,8 +32,8 @@
 
    ```yaml
    dependencies:
-     crystalship-rig-core:
-       github: crystal-dev/crystalship-rig-core
+     crystalship-core:
+       github: crystal-dev/crystalship-core
    ```
 
 2. Run `shards install`
@@ -43,30 +43,30 @@
 ### DI example
 
 ```crystal
-require "crystalship-rig-core"
+require "crystalship-core"
 
 module App
-  @[CrShip::Rig::Core::Component]
-  class MailTransport < CrShip::Rig::Core::Injectable
+  @[CrShip::Core::Component]
+  class MailTransport < CrShip::Core::Injectable
   end
 
-  @[CrShip::Rig::Core::Component]
-  class EmailService < CrShip::Rig::Core::Injectable
+  @[CrShip::Core::Component]
+  class EmailService < CrShip::Core::Injectable
     def initialize(@transport : App::MailTransport)
     end
   end
 end
 
-svc = CrShip::Rig::Core::Container.resolve(App::EmailService)
+svc = CrShip::Core::Container.resolve(App::EmailService)
 ```
 
 ### Config example
 
 ```crystal
-require "crystalship-rig-core"
+require "crystalship-core"
 
 module AppConfig
-  include CrShip::Rig::Core::Config
+  include CrShip::Core::Config
 
   define do
     group :http do
@@ -100,7 +100,7 @@ crystal tool format
 
 ## Contributing
 
-1. Fork it (<https://github.com/crystalship-dev/crystalship-rig-core/fork>)
+1. Fork it (<https://github.com/crystalship-dev/crystalship-core/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

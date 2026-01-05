@@ -4,6 +4,6 @@ require "./core/di/container"
 require "./core/config"
 require "./core/lifecycle"
 
-module CrShip::Rig::Core
+module CrShip::Core
   VERSION = "0.0.2"
 end

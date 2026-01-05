@@ -1,7 +1,7 @@
-module CrShip::Rig::Core::Container
+module CrShip::Core::Container
   def self.resolve(type : T.class) : T forall T
-    {% unless T < CrShip::Rig::Core::Injectable %}
-      {% raise "DI: #{T} must inherit from CrShip::Rig::Core::Injectable to be resolvable" %}
+    {% unless T < CrShip::Core::Injectable %}
+      {% raise "DI: #{T} must inherit from CrShip::Core::Injectable to be resolvable" %}
     {% else %}
       {% key = T.name.stringify.gsub(/::/, "__") %}
       self.__resolve_{{ key.id }}
@@ -9,7 +9,7 @@ module CrShip::Rig::Core::Container
   end
 
   macro finished
-    {% for t in CrShip::Rig::Core::Injectable.all_subclasses %}
+    {% for t in CrShip::Core::Injectable.all_subclasses %}
       {% if t.abstract? %}
         {% next %}
       {% end %}
@@ -41,7 +41,7 @@ module CrShip::Rig::Core::Container
 
                 {% dep = arg.restriction.resolve %}
 
-                {% unless dep < CrShip::Rig::Core::Injectable %}
+                {% unless dep < CrShip::Core::Injectable %}
                   {% raise "DI: #{t} depends on #{dep}, which is not Injectable. Only Injectable dependencies are supported." %}
                 {% end %}
 

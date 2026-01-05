@@ -1,4 +1,4 @@
-module CrShip::Rig::Core
+module CrShip::Core
   module Lifecycle
     @@before_boot = [] of Proc(Nil)
     @@on_ready = [] of Proc(Nil)
